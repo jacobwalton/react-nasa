@@ -4,9 +4,12 @@ import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "./photo-of-the-day.css";
+import { useState, useEffect } from "react";
+import data from "../../util/data";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
+    overflow: "scroll",
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
@@ -21,11 +24,18 @@ const useStyles = makeStyles((theme) => ({
     padding: "30px",
     outline: "none",
     boxShadow: theme.shadows[5],
-    padding: theme.spacing(2, 4, 3),
   },
 }));
 
 export default function TransitionsModal() {
+  const [apod, setApod] = useState({});
+
+  useEffect(() => {
+    data.getApod().then((apodData) => {
+      setApod(apodData.data);
+    });
+  }, []);
+
   const classes = useStyles();
   const [open, setOpen] = React.useState(false);
 
@@ -43,8 +53,6 @@ export default function TransitionsModal() {
         Photo Of The Day
       </button>
       <Modal
-        aria-labelledby="transition-modal-title"
-        aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
         onClose={handleClose}
@@ -55,11 +63,30 @@ export default function TransitionsModal() {
         }}
       >
         <Fade in={open}>
-          <div className={classes.paper}>
-            <h2 id="transition-modal-title">Transition modal</h2>
-            <p id="transition-modal-description">
-              react-transition-group animates me.
-            </p>
+          <div className="apod-container">
+            <h1>NASA API</h1>
+            <h2>Astronomy Photo of the Day</h2>
+            {apod && (
+              <article>
+                <header>
+                  {apod.title} - <i>{apod.date}</i>
+                </header>
+                <img
+                  src={apod.url}
+                  alt="APOD"
+                  width="500"
+                  height="fit-content"
+                />
+                <p>{apod.explanation}</p>
+                <pre
+                  style={{
+                    overflowX: "auto",
+                    whiteSpace: "pre-wrap",
+                    wordWrap: "break-word",
+                  }}
+                ></pre>
+              </article>
+            )}
           </div>
         </Fade>
       </Modal>

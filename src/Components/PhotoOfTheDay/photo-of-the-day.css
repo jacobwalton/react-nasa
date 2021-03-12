@@ -13,10 +13,16 @@
   height: 100px;
 }
 
-#transition-modal-title {
-  color: #333;
+.apod-container {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 500px;
+  background-color: #222;
+  padding: 10px;
+  margin: 30px;
 }
-
-#transition-modal-description {
-  color: #333;
+.apod-container img {
+  border-radius: 20px;
+  margin-top: 5px;
 }
