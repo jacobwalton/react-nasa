@@ -1,0 +1,22 @@
+.photo-btn {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-color: rgb(67, 150, 218);
+  outline: none;
+  cursor: pointer;
+  border: none;
+  border-radius: 100px 0px 200px 200px;
+  font-size: 30px;
+  font-weight: bolder;
+  width: fit-content;
+  height: 100px;
+}
+
+#transition-modal-title {
+  color: #333;
+}
+
+#transition-modal-description {
+  color: #333;
+}
