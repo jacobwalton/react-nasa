@@ -13,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    backdropFilter: "blur(5px)",
+    backdropFilter: "blur(10px)",
   },
   paper: {
     backgroundColor: theme.palette.background.paper,
