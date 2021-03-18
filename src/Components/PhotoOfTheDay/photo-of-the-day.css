@@ -16,17 +16,16 @@
 }
 
 .apod-container {
-  max-height: 400px;
+  height: 100%;
   outline: none;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
   max-width: 500px;
-  background-color: #222;
-  padding: 10px;
-  margin: 30px;
+  padding: 0px 50px 0px 50px;
+  background-color: rgba(0, 0, 0, 0.452);
 }
 .apod-container img {
   border-radius: 20px;
-  margin-top: 5px;
+  margin-right: 5px;
 }

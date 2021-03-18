@@ -1,11 +1,10 @@
 import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
-import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
 import "./photo-of-the-day.css";
 import { useState, useEffect } from "react";
-import data from "../../util/data";
+import photoData from "../../util/photoData";
 
 const useStyles = makeStyles((theme) => ({
   modal: {
@@ -31,7 +30,7 @@ export default function TransitionsModal() {
   const [apod, setApod] = useState({});
 
   useEffect(() => {
-    data.getApod().then((apodData) => {
+    photoData.getApod().then((apodData) => {
       setApod(apodData.data);
     });
   }, []);
@@ -57,10 +56,6 @@ export default function TransitionsModal() {
         open={open}
         onClose={handleClose}
         closeAfterTransition
-        BackdropComponent={Backdrop}
-        BackdropProps={{
-          timeout: 500,
-        }}
       >
         <Fade in={open}>
           <div className="apod-container">
@@ -71,20 +66,22 @@ export default function TransitionsModal() {
                 <header>
                   {apod.title} - <i>{apod.date}</i>
                 </header>
-                <img
-                  src={apod.url}
-                  alt="APOD"
-                  width="500"
-                  height="fit-content"
-                />
-                <p>{apod.explanation}</p>
-                <pre
-                  style={{
-                    overflowX: "auto",
-                    whiteSpace: "pre-wrap",
-                    wordWrap: "break-word",
-                  }}
-                ></pre>
+                <div className="mainContent">
+                  <img
+                    src={apod.url}
+                    alt="APOD"
+                    width="200"
+                    height="fit-content"
+                  />
+                  <p>{apod.explanation}</p>
+                  <pre
+                    style={{
+                      overflowX: "auto",
+                      whiteSpace: "pre-wrap",
+                      wordWrap: "break-word",
+                    }}
+                  ></pre>
+                </div>
               </article>
             )}
           </div>

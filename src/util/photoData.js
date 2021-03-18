@@ -17,7 +17,7 @@ axios.interceptors.request.use(
     return Promise.reject(error);
   }
 );
-
+// eslint-disable-next-line
 export default {
   getApod() {
     return axios.get(`${nasaEndpoint}planetary/apod`);
